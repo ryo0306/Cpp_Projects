@@ -1,0 +1,16 @@
+*.sdf
+*.opensdf
+*.sln
+*.vcxproj
+*.filters
+*.exe
+*.ilk
+*.pdb
+*.suo
+*.dll
+
+include/
+Windows/
+res/
+Debug/
+Release/

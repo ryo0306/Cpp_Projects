@@ -1,0 +1,251 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="_Lib">
+      <UniqueIdentifier>{64bf6fe1-3a56-4217-b142-c4b8acad9b8f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="_Header">
+      <UniqueIdentifier>{e3328b72-d816-45bb-a565-b60a8e5c43f9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource">
+      <UniqueIdentifier>{ffda554a-4475-4acc-a83b-d8306cabe9f2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Object">
+      <UniqueIdentifier>{7c5b6e04-ee0f-4a7f-b590-e81e1a16b153}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Scene">
+      <UniqueIdentifier>{028203dd-afc0-471e-bedd-08e2601ffff9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="System">
+      <UniqueIdentifier>{40fb5737-7952-4891-b521-ae80fcff6e2a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Scene\Strategy">
+      <UniqueIdentifier>{297deecb-2c13-4aea-b039-b6778ebd43dc}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\lib\appEnv.cpp">
+      <Filter>_Lib</Filter>
+    </ClCompile>
+    <ClCompile Include="src\lib\audio.cpp">
+      <Filter>_Lib</Filter>
+    </ClCompile>
+    <ClCompile Include="src\lib\camera2D.cpp">
+      <Filter>_Lib</Filter>
+    </ClCompile>
+    <ClCompile Include="src\lib\fileUtil.cpp">
+      <Filter>_Lib</Filter>
+    </ClCompile>
+    <ClCompile Include="src\lib\glExt.cpp">
+      <Filter>_Lib</Filter>
+    </ClCompile>
+    <ClCompile Include="src\lib\glfwWindow.cpp">
+      <Filter>_Lib</Filter>
+    </ClCompile>
+    <ClCompile Include="src\lib\graph.cpp">
+      <Filter>_Lib</Filter>
+    </ClCompile>
+    <ClCompile Include="src\lib\matrix.cpp">
+      <Filter>_Lib</Filter>
+    </ClCompile>
+    <ClCompile Include="src\lib\os_win.cpp">
+      <Filter>_Lib</Filter>
+    </ClCompile>
+    <ClCompile Include="src\lib\png.cpp">
+      <Filter>_Lib</Filter>
+    </ClCompile>
+    <ClCompile Include="src\lib\random.cpp">
+      <Filter>_Lib</Filter>
+    </ClCompile>
+    <ClCompile Include="src\lib\texture.cpp">
+      <Filter>_Lib</Filter>
+    </ClCompile>
+    <ClCompile Include="src\lib\utils.cpp">
+      <Filter>_Lib</Filter>
+    </ClCompile>
+    <ClCompile Include="src\lib\wav.cpp">
+      <Filter>_Lib</Filter>
+    </ClCompile>
+    <ClCompile Include="src\lib\glTexture.cpp">
+      <Filter>_Lib</Filter>
+    </ClCompile>
+    <ClCompile Include="src\lib\font.cpp">
+      <Filter>_Lib</Filter>
+    </ClCompile>
+    <ClCompile Include="src\origin\main.cpp" />
+    <ClCompile Include="src\origin\System\data_depot.cpp">
+      <Filter>System</Filter>
+    </ClCompile>
+    <ClCompile Include="src\origin\System\draw_window.cpp">
+      <Filter>System</Filter>
+    </ClCompile>
+    <ClCompile Include="src\origin\System\scene_manager.cpp">
+      <Filter>System</Filter>
+    </ClCompile>
+    <ClCompile Include="src\origin\Scene\battle.cpp">
+      <Filter>Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="src\origin\Scene\data_select.cpp">
+      <Filter>Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="src\origin\Scene\pause.cpp">
+      <Filter>Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="src\origin\Scene\result.cpp">
+      <Filter>Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="src\origin\Scene\title.cpp">
+      <Filter>Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="src\origin\Resource\map_data.cpp">
+      <Filter>Resource</Filter>
+    </ClCompile>
+    <ClCompile Include="src\origin\Object\character.cpp">
+      <Filter>Object</Filter>
+    </ClCompile>
+    <ClCompile Include="src\origin\Object\collision.cpp">
+      <Filter>Object</Filter>
+    </ClCompile>
+    <ClCompile Include="src\origin\Scene\strategy.cpp">
+      <Filter>Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="src\origin\Scene\Strategy\armaments.cpp">
+      <Filter>Scene\Strategy</Filter>
+    </ClCompile>
+    <ClCompile Include="src\origin\Scene\Strategy\funds.cpp">
+      <Filter>Scene\Strategy</Filter>
+    </ClCompile>
+    <ClCompile Include="src\origin\Scene\Strategy\invasion.cpp">
+      <Filter>Scene\Strategy</Filter>
+    </ClCompile>
+    <ClCompile Include="src\origin\Scene\Strategy\develop.cpp">
+      <Filter>Scene\Strategy</Filter>
+    </ClCompile>
+    <ClCompile Include="src\origin\System\slot.cpp">
+      <Filter>System</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\lib\appEnv.hpp">
+      <Filter>_Header</Filter>
+    </ClInclude>
+    <ClInclude Include="src\lib\audio.hpp">
+      <Filter>_Header</Filter>
+    </ClInclude>
+    <ClInclude Include="src\lib\camera2D.hpp">
+      <Filter>_Header</Filter>
+    </ClInclude>
+    <ClInclude Include="src\lib\defines.hpp">
+      <Filter>_Header</Filter>
+    </ClInclude>
+    <ClInclude Include="src\lib\fileUtil.hpp">
+      <Filter>_Header</Filter>
+    </ClInclude>
+    <ClInclude Include="src\lib\glExt.hpp">
+      <Filter>_Header</Filter>
+    </ClInclude>
+    <ClInclude Include="src\lib\glfwWindow.hpp">
+      <Filter>_Header</Filter>
+    </ClInclude>
+    <ClInclude Include="src\lib\graph.hpp">
+      <Filter>_Header</Filter>
+    </ClInclude>
+    <ClInclude Include="src\lib\matrix.hpp">
+      <Filter>_Header</Filter>
+    </ClInclude>
+    <ClInclude Include="src\lib\os.hpp">
+      <Filter>_Header</Filter>
+    </ClInclude>
+    <ClInclude Include="src\lib\os_win.hpp">
+      <Filter>_Header</Filter>
+    </ClInclude>
+    <ClInclude Include="src\lib\png.hpp">
+      <Filter>_Header</Filter>
+    </ClInclude>
+    <ClInclude Include="src\lib\random.hpp">
+      <Filter>_Header</Filter>
+    </ClInclude>
+    <ClInclude Include="src\lib\texture.hpp">
+      <Filter>_Header</Filter>
+    </ClInclude>
+    <ClInclude Include="src\lib\utils.hpp">
+      <Filter>_Header</Filter>
+    </ClInclude>
+    <ClInclude Include="src\lib\vector.hpp">
+      <Filter>_Header</Filter>
+    </ClInclude>
+    <ClInclude Include="src\lib\wav.hpp">
+      <Filter>_Header</Filter>
+    </ClInclude>
+    <ClInclude Include="src\lib\glTexture.hpp">
+      <Filter>_Header</Filter>
+    </ClInclude>
+    <ClInclude Include="src\lib\font.hpp">
+      <Filter>_Header</Filter>
+    </ClInclude>
+    <ClInclude Include="src\origin\common.h" />
+    <ClInclude Include="src\origin\System\data_depot.h">
+      <Filter>System</Filter>
+    </ClInclude>
+    <ClInclude Include="src\origin\System\draw_window.h">
+      <Filter>System</Filter>
+    </ClInclude>
+    <ClInclude Include="src\origin\System\game_player.hpp">
+      <Filter>System</Filter>
+    </ClInclude>
+    <ClInclude Include="src\origin\System\scene_manager.h">
+      <Filter>System</Filter>
+    </ClInclude>
+    <ClInclude Include="src\origin\Scene\battle.h">
+      <Filter>Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="src\origin\Scene\data_select.h">
+      <Filter>Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="src\origin\Scene\pause.h">
+      <Filter>Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="src\origin\Scene\result.h">
+      <Filter>Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="src\origin\Scene\title.h">
+      <Filter>Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="src\origin\Resource\map_data.h">
+      <Filter>Resource</Filter>
+    </ClInclude>
+    <ClInclude Include="src\origin\Object\character.h">
+      <Filter>Object</Filter>
+    </ClInclude>
+    <ClInclude Include="src\origin\Object\collision.h">
+      <Filter>Object</Filter>
+    </ClInclude>
+    <ClInclude Include="src\origin\System\user.hpp">
+      <Filter>System</Filter>
+    </ClInclude>
+    <ClInclude Include="src\origin\System\system.hpp">
+      <Filter>System</Filter>
+    </ClInclude>
+    <ClInclude Include="src\origin\Resource\music.hpp">
+      <Filter>Resource</Filter>
+    </ClInclude>
+    <ClInclude Include="src\origin\Scene\strategy.h">
+      <Filter>Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="src\origin\Scene\Strategy\armaments.h">
+      <Filter>Scene\Strategy</Filter>
+    </ClInclude>
+    <ClInclude Include="src\origin\Scene\Strategy\funds.h">
+      <Filter>Scene\Strategy</Filter>
+    </ClInclude>
+    <ClInclude Include="src\origin\Scene\Strategy\invasion.h">
+      <Filter>Scene\Strategy</Filter>
+    </ClInclude>
+    <ClInclude Include="src\origin\Scene\Strategy\develop.h">
+      <Filter>Scene\Strategy</Filter>
+    </ClInclude>
+    <ClInclude Include="src\origin\System\slot.h">
+      <Filter>System</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
