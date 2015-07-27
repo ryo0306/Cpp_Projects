@@ -1,0 +1,13 @@
+
+*.sdf
+*.opensdf
+*.exe
+*.ilk
+*.pdb
+*.suo
+*.db
+
+/res
+/Debug
+/Release
+/src/lib

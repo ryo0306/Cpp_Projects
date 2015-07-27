@@ -1,0 +1,246 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{6e761bf2-cb49-42ee-a4a1-4505b796a6f7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Scene">
+      <UniqueIdentifier>{5fadff8e-da36-43eb-85c7-980e1be70837}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Utility">
+      <UniqueIdentifier>{77d59a35-e1f3-45e5-b4c6-0b4252485ceb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Objects">
+      <UniqueIdentifier>{8772471f-9fd5-4fce-8a27-85799213268d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Objects\ObjectBase">
+      <UniqueIdentifier>{c6d6c61d-264e-4d4a-97d9-e338d5904800}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Scene\SceneBase">
+      <UniqueIdentifier>{d4b06c0d-36c7-4e00-a8c3-c48fff7e711f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Resources">
+      <UniqueIdentifier>{6155a083-0075-46dd-b57e-e293d8bb07e4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Frameworks">
+      <UniqueIdentifier>{af93b5ea-e8dd-470c-ba10-cd8be8f610e3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Frameworks\Headers">
+      <UniqueIdentifier>{b34314d8-4c9f-4a7d-ae48-f2f5e3d783b6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Frameworks\Lib">
+      <UniqueIdentifier>{983490c7-8486-4c78-9811-71ef005a4f66}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\lib\appEnv.hpp">
+      <Filter>Frameworks\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="src\lib\audio.hpp">
+      <Filter>Frameworks\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="src\lib\camera2D.hpp">
+      <Filter>Frameworks\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="src\lib\defines.hpp">
+      <Filter>Frameworks\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="src\lib\fileUtil.hpp">
+      <Filter>Frameworks\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="src\lib\font.hpp">
+      <Filter>Frameworks\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="src\lib\framework.hpp">
+      <Filter>Frameworks\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="src\lib\gamePad.hpp">
+      <Filter>Frameworks\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="src\lib\glExt.hpp">
+      <Filter>Frameworks\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="src\lib\glfwWindow.hpp">
+      <Filter>Frameworks\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="src\lib\glTexture.hpp">
+      <Filter>Frameworks\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="src\lib\graph.hpp">
+      <Filter>Frameworks\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="src\lib\matrix.hpp">
+      <Filter>Frameworks\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="src\lib\os.hpp">
+      <Filter>Frameworks\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="src\lib\os_osx.hpp">
+      <Filter>Frameworks\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="src\lib\os_win.hpp">
+      <Filter>Frameworks\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="src\lib\png.hpp">
+      <Filter>Frameworks\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="src\lib\random.hpp">
+      <Filter>Frameworks\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="src\lib\streaming.hpp">
+      <Filter>Frameworks\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="src\lib\streamWav.hpp">
+      <Filter>Frameworks\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="src\lib\texture.hpp">
+      <Filter>Frameworks\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="src\lib\utils.hpp">
+      <Filter>Frameworks\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="src\lib\vector.hpp">
+      <Filter>Frameworks\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="src\lib\wav.hpp">
+      <Filter>Frameworks\Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Scene\SceneBase.hpp">
+      <Filter>Source Files\Scene\SceneBase</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Scene\SceneManager.h">
+      <Filter>Source Files\Scene\SceneBase</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Objects\Object.hpp">
+      <Filter>Source Files\Objects\ObjectBase</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Objects\Player.h">
+      <Filter>Source Files\Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Common.hpp">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Resources\Resource.h">
+      <Filter>Source Files\Resources</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Scene\SceneMaker.h">
+      <Filter>Source Files\Scene\SceneBase</Filter>
+    </ClInclude>
+    <ClInclude Include="src\GamePlayer.hpp">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Scene\MainGame.h">
+      <Filter>Source Files\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Scene\Title.h">
+      <Filter>Source Files\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Utility\Sequencer.hpp">
+      <Filter>Source Files\Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Utility\Collision.h">
+      <Filter>Source Files\Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Utility\Fps.h">
+      <Filter>Source Files\Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Utility\DrawTexture.h">
+      <Filter>Source Files\Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Scene\Result.h">
+      <Filter>Source Files\Scene</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\lib\appEnv.cpp">
+      <Filter>Frameworks\Lib</Filter>
+    </ClCompile>
+    <ClCompile Include="src\lib\audio.cpp">
+      <Filter>Frameworks\Lib</Filter>
+    </ClCompile>
+    <ClCompile Include="src\lib\camera2D.cpp">
+      <Filter>Frameworks\Lib</Filter>
+    </ClCompile>
+    <ClCompile Include="src\lib\fileUtil.cpp">
+      <Filter>Frameworks\Lib</Filter>
+    </ClCompile>
+    <ClCompile Include="src\lib\font.cpp">
+      <Filter>Frameworks\Lib</Filter>
+    </ClCompile>
+    <ClCompile Include="src\lib\gamePad.cpp">
+      <Filter>Frameworks\Lib</Filter>
+    </ClCompile>
+    <ClCompile Include="src\lib\glExt.cpp">
+      <Filter>Frameworks\Lib</Filter>
+    </ClCompile>
+    <ClCompile Include="src\lib\glfwWindow.cpp">
+      <Filter>Frameworks\Lib</Filter>
+    </ClCompile>
+    <ClCompile Include="src\lib\glTexture.cpp">
+      <Filter>Frameworks\Lib</Filter>
+    </ClCompile>
+    <ClCompile Include="src\lib\graph.cpp">
+      <Filter>Frameworks\Lib</Filter>
+    </ClCompile>
+    <ClCompile Include="src\lib\matrix.cpp">
+      <Filter>Frameworks\Lib</Filter>
+    </ClCompile>
+    <ClCompile Include="src\lib\os_osx.cpp">
+      <Filter>Frameworks\Lib</Filter>
+    </ClCompile>
+    <ClCompile Include="src\lib\os_win.cpp">
+      <Filter>Frameworks\Lib</Filter>
+    </ClCompile>
+    <ClCompile Include="src\lib\png.cpp">
+      <Filter>Frameworks\Lib</Filter>
+    </ClCompile>
+    <ClCompile Include="src\lib\random.cpp">
+      <Filter>Frameworks\Lib</Filter>
+    </ClCompile>
+    <ClCompile Include="src\lib\streaming.cpp">
+      <Filter>Frameworks\Lib</Filter>
+    </ClCompile>
+    <ClCompile Include="src\lib\streamWav.cpp">
+      <Filter>Frameworks\Lib</Filter>
+    </ClCompile>
+    <ClCompile Include="src\lib\texture.cpp">
+      <Filter>Frameworks\Lib</Filter>
+    </ClCompile>
+    <ClCompile Include="src\lib\utils.cpp">
+      <Filter>Frameworks\Lib</Filter>
+    </ClCompile>
+    <ClCompile Include="src\lib\wav.cpp">
+      <Filter>Frameworks\Lib</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Scene\SceneManager.cpp">
+      <Filter>Source Files\Scene\SceneBase</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Objects\Player.cpp">
+      <Filter>Source Files\Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Resources\Resource.cpp">
+      <Filter>Source Files\Resources</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Scene\SceneMaker.cpp">
+      <Filter>Source Files\Scene\SceneBase</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Scene\MainGame.cpp">
+      <Filter>Source Files\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Scene\Title.cpp">
+      <Filter>Source Files\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Utility\System.cpp">
+      <Filter>Source Files\Utility</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Utility\Utility.cpp">
+      <Filter>Source Files\Utility</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Scene\Result.cpp">
+      <Filter>Source Files\Scene</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>
