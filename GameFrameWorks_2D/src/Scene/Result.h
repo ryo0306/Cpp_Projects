@@ -6,17 +6,15 @@
 namespace frameworks {
 namespace scene {
 
-class Title : public SceneBase {
+class Result : public SceneBase {
 public:
-  Title();
+  Result();
 
   void Update() override;
   void Draw() override;
 
 private:
   // •K—v‚È•Ï”AŠÖ”‚ğ‚±‚±‚Éì‚é
-  u_int textureID;
-  u_int mediaID;
 };
 
 }  // end scene

@@ -1,29 +1,35 @@
 
-#include "../FrameWork/scene_manager.h"
-#include "title.h"
+#include "Title.h"
+
+using namespace frameworks::scene;
 
 
-cTitle::cTitle() {
+// 初期化をする
+Title::Title() :
+SceneBase(SceneName::Title, SceneName::Main) {
+  textureID = Asset().Append().Texture("res/png/player.png");
+  mediaID = Asset().Append().Media("res/wav/se_test.wav");
 }
 
 
-void cTitle::update() {
-  if (env::get()->isPushButton(Mouse::LEFT)) {
-    m_is_finish = true;
+// 更新
+void Title::Update() {
+  // isFinish : 現在のシーンを終了するための変数
+  // true になると画面が変わります
+  isFinish = Env().isPushKey(ENTER);
+
+  //test
+  if (Env().isPushKey('A')) {
+    Asset().Find().Media(mediaID)->play();
   }
 }
 
 
-void cTitle::draw() {
-  drawFillCircle(0, 0, 50, 50, 50, Color::white);
-}
+// 描画
+void Title::Draw() {
+  //drawFillCircle(0, 0, 50, 50, 50, Color::white);
 
-
-SceneState cTitle::getScene() const {
-  return SceneState::TITLE;
-}
-
-
-std::shared_ptr<cScene> cTitle::nextScene() const {
-  return std::make_shared<cMainGame>();
+  //test
+  auto player = Asset().Find().Texture(textureID);
+  drawTextureBox(0, 0, 100, 100, 0, 0, 128, 128, *player);
 }
