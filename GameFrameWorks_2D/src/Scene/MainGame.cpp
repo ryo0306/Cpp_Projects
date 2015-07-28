@@ -21,8 +21,8 @@ void MainGame::Update() {
 
   for (auto& block : stageCollisions) {
     Transform temp;
-    temp.pos = block.first;
-    temp.scale = block.second;
+    temp.pos = block.pos;
+    temp.scale = block.size;
     if (IsHitRectToRect(playerTransform, temp)){
       player.Translate(temp);
       player.GravityReset();
