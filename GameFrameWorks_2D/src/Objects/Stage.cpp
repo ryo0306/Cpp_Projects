@@ -21,6 +21,7 @@ Stage::Stage() {
 
 void Stage::Update() {
   // do not something.
+  // test
 }
 
 
