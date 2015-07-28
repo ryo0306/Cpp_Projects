@@ -7,13 +7,14 @@ using namespace frameworks::object;
 StageGimmick::StageGimmick(int direction,Vec2f pos) {
 	this->direction = direction;
 	transform.pos = pos;
+	transform.scale = Vec2f(50,50);
 }
 
 
 void StageGimmick::Draw(){
 
-	drawFillCircle(transform.pos.x(), transform.pos.y(),
-					25, 25, 20, GetColor());
+	drawFillBox(transform.pos.x(), transform.pos.y(),
+				transform.scale.x(), transform.scale.y(), GetColor());
 
 }
 

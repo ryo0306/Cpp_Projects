@@ -1,7 +1,8 @@
 
 #include "MainGame.h"
-
+#include <iostream>
 using namespace frameworks::scene;
+using namespace frameworks::utility;
 
 
 // ‰Šú‰»‚ğ‚·‚é
@@ -17,8 +18,20 @@ void MainGame::Update() {
   // isFinish : Œ»İ‚ÌƒV[ƒ“‚ğI—¹‚·‚é‚½‚ß‚Ì•Ï”
   // true ‚É‚È‚é‚Æ‰æ–Ê‚ª•Ï‚í‚è‚Ü‚·
 	player.Update();
+	/*
+	if (IsHitRectToRect(player.GetTransform(),
+		gimmick.GetTransform())){
+		std::cout << "1" << std::endl;
+		std::cout << player.GetTransform().pos << std::endl;
+		std::cout << gimmick.GetTransform().pos << std::endl;
+	}
+	*/
 
-  //isFinish = Env().isPushKey(ENTER);
+	
+
+
+	isFinish = IsHitRectToRect(player.GetTransform(),
+								gimmick.GetTransform());
 }
 
 
