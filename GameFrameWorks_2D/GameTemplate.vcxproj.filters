@@ -150,6 +150,15 @@
     <ClInclude Include="src\Scene\Result.h">
       <Filter>Source Files\Scene</Filter>
     </ClInclude>
+    <ClInclude Include="src\Utility\GameData.h">
+      <Filter>Source Files\Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Objects\Stage.h">
+      <Filter>Source Files\Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Objects\Gimmick.h">
+      <Filter>Source Files\Objects</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\lib\appEnv.cpp">
@@ -241,6 +250,12 @@
     </ClCompile>
     <ClCompile Include="src\Scene\Result.cpp">
       <Filter>Source Files\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Objects\Stage.cpp">
+      <Filter>Source Files\Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Objects\Gimmick.cpp">
+      <Filter>Source Files\Objects</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

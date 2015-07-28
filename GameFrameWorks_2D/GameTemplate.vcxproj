@@ -37,8 +37,10 @@
     <ClInclude Include="src\lib\utils.hpp" />
     <ClInclude Include="src\lib\vector.hpp" />
     <ClInclude Include="src\lib\wav.hpp" />
+    <ClInclude Include="src\Objects\Gimmick.h" />
     <ClInclude Include="src\Objects\Object.hpp" />
     <ClInclude Include="src\Objects\Player.h" />
+    <ClInclude Include="src\Objects\Stage.h" />
     <ClInclude Include="src\Resources\Resource.h" />
     <ClInclude Include="src\Scene\MainGame.h" />
     <ClInclude Include="src\Scene\Result.h" />
@@ -48,6 +50,7 @@
     <ClInclude Include="src\Scene\Title.h" />
     <ClInclude Include="src\Utility\Collision.h" />
     <ClInclude Include="src\Utility\Fps.h" />
+    <ClInclude Include="src\Utility\GameData.h" />
     <ClInclude Include="src\Utility\Sequencer.hpp" />
     <ClInclude Include="src\Utility\DrawTexture.h" />
   </ItemGroup>
@@ -73,7 +76,9 @@
     <ClCompile Include="src\lib\utils.cpp" />
     <ClCompile Include="src\lib\wav.cpp" />
     <ClCompile Include="src\Main.cpp" />
+    <ClCompile Include="src\Objects\Gimmick.cpp" />
     <ClCompile Include="src\Objects\Player.cpp" />
+    <ClCompile Include="src\Objects\Stage.cpp" />
     <ClCompile Include="src\Resources\Resource.cpp" />
     <ClCompile Include="src\Scene\MainGame.cpp" />
     <ClCompile Include="src\Scene\Result.cpp" />
