@@ -1,6 +1,7 @@
 
 #pragma once
 #include "SceneBase.hpp"
+#include "../Objects/Stage.h"
 #include "../Objects/Player.h"
 #include "../Objects/Gimmick.h"
 
@@ -16,6 +17,7 @@ public:
 
 private:
   // •K—v‚È•Ï”AŠÖ”‚ğ‚±‚±‚Éì‚é
+  object::Stage stage;
 	object::Player player;
 	object::StageGimmick gimmick;
 };
