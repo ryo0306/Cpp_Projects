@@ -20,11 +20,9 @@ bool IsHitPointToCircle(const Vec2f& point,
                         const float radius);
 */
 
-/*
 // éläpÇ∆éläp
 bool IsHitRectToRect(const Transform& obj1,
                      const Transform& obj2);
-*/
 
 }  // end utility
 }  // end frameworks

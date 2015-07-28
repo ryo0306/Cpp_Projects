@@ -36,5 +36,21 @@ void DrawTexture(const Transform& transform,
                  transform.rotate, transform.scale, origin);
 }
 
+bool IsHitRectToRect(const Transform& obj1,
+                     const Transform& obj2) {
+  const auto& obj1Pos = obj1.pos;
+  const auto& obj1Size = obj1.scale;
+  const auto& obj2Pos = obj2.pos;
+  const auto& obj2Size = obj2.scale;
+
+  const bool hitL = obj1Pos.x() + obj1Size.x() > obj2Pos.x();
+  const bool hitR = obj1Pos.x() < obj2Pos.x() + obj2Size.x();
+
+  const bool hitT = obj1Pos.y() < obj2Pos.y() + obj2Size.y();
+  const bool hitB = obj1Pos.y() + obj1Size.y() > obj2Pos.y();
+
+  return (hitL || hitR) && (hitT || hitB);
+}
+
 }  // end utility
 }  // end frameworks
