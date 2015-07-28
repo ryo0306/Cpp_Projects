@@ -43,13 +43,14 @@ bool IsHitRectToRect(const Transform& obj1,
   const auto& obj2Pos = obj2.pos;
   const auto& obj2Size = obj2.scale;
 
+  //const bool hitL = (obj2Pos.x() - (obj1Pos.x() + obj1Size.x())) < 0;
   const bool hitL = obj1Pos.x() + obj1Size.x() > obj2Pos.x();
   const bool hitR = obj1Pos.x() < obj2Pos.x() + obj2Size.x();
 
   const bool hitT = obj1Pos.y() < obj2Pos.y() + obj2Size.y();
   const bool hitB = obj1Pos.y() + obj1Size.y() > obj2Pos.y();
 
-  return (hitL || hitR) && (hitT || hitB);
+  return ((hitL && hitR) && (hitT && hitB)) || ((hitL && hitR) && (hitT && hitB));
 }
 
 }  // end utility

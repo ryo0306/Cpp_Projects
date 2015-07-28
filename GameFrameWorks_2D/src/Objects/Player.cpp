@@ -6,6 +6,7 @@ using namespace frameworks::object;
 
 Player::Player(const Vec2f& pos) : Object(pos) {
 	transform.pos = pos;
+	transform.scale = Vec2f(100, 100);
 	time = 0;
 	direction = Bottom;
 	accela = Vec2f(0.5, 0.5);
@@ -107,7 +108,7 @@ void Player::Update() {
 
 void Player::Draw() {
 	drawFillBox(transform.pos.x(),transform.pos.y(),
-				100,100,Color::red);
+				transform.scale.x(),transform.scale.y(),Color::red);
 }
 
 
