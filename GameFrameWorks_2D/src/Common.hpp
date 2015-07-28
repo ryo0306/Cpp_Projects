@@ -15,6 +15,11 @@ enum WindowSize {
 enum KeyBind {
   ESCAPE = GLFW_KEY_ESCAPE,
   ENTER  = GLFW_KEY_ENTER,
+  KEY_L = GLFW_KEY_LEFT,
+  KEY_R = GLFW_KEY_RIGHT,
+  KEY_U = GLFW_KEY_UP,
+  KEY_D = GLFW_KEY_DOWN,
+  SPACE = GLFW_KEY_SPACE,
 };
 
 // 座標、サイズ、回転状態、回転速度
