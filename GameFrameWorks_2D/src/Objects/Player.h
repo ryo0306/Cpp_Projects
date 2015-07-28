@@ -12,8 +12,31 @@ public:
 
   void Update() override;
   void Draw() override;
+  void GravityReset();
+
+  bool GetKeyActive() { return time != 0; }
+
+  void SetGravityDirection();
 
 private:
+	enum {
+		KeyActiveTime = 5,
+		Move = 5,
+		Gravity = 1,
+	};
+	enum {
+		Top,
+		Right,
+		Bottom,
+		Left,
+	};
+
+	int direction;
+	Vec2f accela;
+	Vec2f velocity;
+	int time;
+	
+
 };
 
 }  // end object
