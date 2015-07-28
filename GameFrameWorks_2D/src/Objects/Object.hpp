@@ -1,6 +1,7 @@
 
 #pragma once
 #include "../Common.hpp"
+#include "../Resources/Resource.h"
 #include "../Utility/Collision.h"
 #include "../Utility/GameData.h"
 #include <memory>

@@ -7,8 +7,11 @@
 namespace frameworks {
 namespace object {
 
-typedef std::pair<Vec2f, Vec2f>  Collision;
-typedef std::vector<Collision>   Collisions;
+struct Block {
+  Vec2f pos, size;
+  u_int id;
+};
+typedef std::vector<Block>  Blocks;
 
 class Stage {
 public:
@@ -17,10 +20,11 @@ public:
   void Update();
   void Draw();
 
-  const Collisions& GetTransforms() const { return blocks; }
+  const Blocks& GetTransforms() const { return blocks; }
 
 private:
-  Collisions blocks;
+  Blocks blocks;
+  std::vector<u_int> textureID;
 };
 
 }
