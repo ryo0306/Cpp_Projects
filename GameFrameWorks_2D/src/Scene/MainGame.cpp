@@ -6,7 +6,9 @@ using namespace frameworks::scene;
 
 // ‰Šú‰»‚ğ‚·‚é
 MainGame::MainGame() :
-SceneBase(SceneName::Main, SceneName::Result) {
+SceneBase(SceneName::Main, SceneName::Result),
+player(Vec2f(0, 0)),
+gimmick(Bottom, Vec2f(-200,-300)) {
 }
 
 
@@ -14,11 +16,14 @@ SceneBase(SceneName::Main, SceneName::Result) {
 void MainGame::Update() {
   // isFinish : Œ»İ‚ÌƒV[ƒ“‚ğI—¹‚·‚é‚½‚ß‚Ì•Ï”
   // true ‚É‚È‚é‚Æ‰æ–Ê‚ª•Ï‚í‚è‚Ü‚·
-  isFinish = Env().isPushKey(ENTER);
+	player.Update();
+
+  //isFinish = Env().isPushKey(ENTER);
 }
 
 
 // •`‰æ
 void MainGame::Draw() {
-  drawFillCircle(0, 0, 50, 50, 50, Color::red);
+	gimmick.Draw();
+	player.Draw();	
 }
