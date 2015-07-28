@@ -115,3 +115,22 @@ void Player::Draw() {
 void Player::GravityReset(){
 	velocity = Vec2f(0, 0);
 }
+
+void Player::Translate(frameworks::Transform transform){
+
+  if (direction == Top){
+    this->transform.pos.y() -= velocity.y()-accela.y();
+  }
+
+  if (direction == Right){
+    this->transform.pos.x() -= velocity.x() - accela.x();
+  }
+  if (direction == Bottom){
+    this->transform.pos.y() += velocity.y() - accela.y();
+  }
+  if (direction == Left){
+    this->transform.pos.x() += velocity.x() - accela.x();
+  }
+
+   
+}

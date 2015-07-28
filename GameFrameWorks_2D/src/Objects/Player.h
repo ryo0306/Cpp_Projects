@@ -13,6 +13,7 @@ public:
   void Update() override;
   void Draw() override;
   void GravityReset();
+  void Translate(Transform transform);
 
   bool GetKeyActive() { return time != 0; }
 
