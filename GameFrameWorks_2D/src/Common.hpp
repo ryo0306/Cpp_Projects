@@ -7,7 +7,7 @@
 namespace frameworks {
 
 enum WindowSize {
-  WIDTH  = 1200,
+  WIDTH  = 1600,
   HEIGHT = 900,
 };
 
@@ -20,6 +20,13 @@ enum KeyBind {
   KEY_U = GLFW_KEY_UP,
   KEY_D = GLFW_KEY_DOWN,
   SPACE = GLFW_KEY_SPACE,
+};
+
+enum GravityDirection{
+	Top,
+	Right,
+	Bottom,
+	Left,
 };
 
 // 座標、サイズ、回転状態、回転速度

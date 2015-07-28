@@ -1,7 +1,8 @@
 
 #pragma once
 #include "SceneBase.hpp"
-
+#include "../Objects/Player.h"
+#include "../Objects/Gimmick.h"
 
 namespace frameworks {
 namespace scene {
@@ -15,6 +16,8 @@ public:
 
 private:
   // •K—v‚È•Ï”AŠÖ”‚ğ‚±‚±‚Éì‚é
+	object::Player player;
+	object::StageGimmick gimmick;
 };
 
 }  // end scene

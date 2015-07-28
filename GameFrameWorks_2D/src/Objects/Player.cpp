@@ -16,7 +16,7 @@ void Player::Update() {
 	
 	//  移動処理
 	//  重力が上下だった場合
-	if (direction == Top || direction == Bottom){
+	if (direction == GravityDirection::Top || direction == GravityDirection::Bottom){
 		if (Env().isPressKey(KEY_L)){
 			transform.pos.x() -= Move;
 		}
@@ -26,7 +26,7 @@ void Player::Update() {
 	}
 
 	//  重力が左右だった場合
-	if (direction == Right || direction == Left){
+	if (direction == GravityDirection::Right || direction == GravityDirection::Left){
 		if (Env().isPressKey(KEY_U)){
 			transform.pos.y() += Move;
 		}
@@ -39,17 +39,17 @@ void Player::Update() {
 	//  5フレームは発動しない
 	if (time == 0){
 		if (Env().isPushKey(SPACE)){
-			if (direction == Bottom){
-				direction = Left;
+			if (direction == GravityDirection::Bottom){
+				direction = GravityDirection::Left;
 			}
-			else if (direction == Left){
-				direction = Top;
+			else if (direction == GravityDirection::Left){
+				direction = GravityDirection::Top;
 			}
-			else if (direction == Top){
-				direction = Right;
+			else if (direction == GravityDirection::Top){
+				direction = GravityDirection::Right;
 			}
-			else if (direction == Right){
-				direction = Bottom;
+			else if (direction == GravityDirection::Right){
+				direction = GravityDirection::Bottom;
 			}
 			GravityReset();
 			time = KeyActiveTime;
@@ -60,19 +60,19 @@ void Player::Update() {
 
 	
 
-	if (direction == Top){
+	if (direction == GravityDirection::Top){
 		transform.pos.y() += velocity.y();
 	}
 
-	if (direction == Right){
+	if (direction == GravityDirection::Right){
 		transform.pos.x() += velocity.x();
 	}
 
-	if (direction == Bottom){
+	if (direction == GravityDirection::Bottom){
 		transform.pos.y() -= velocity.y();
 	}
 
-	if (direction == Left){
+	if (direction == GravityDirection::Left){
 		transform.pos.x() -= velocity.x();
 	}
 

@@ -24,12 +24,7 @@ private:
 		Move = 5,
 		Gravity = 1,
 	};
-	enum {
-		Top,
-		Right,
-		Bottom,
-		Left,
-	};
+	
 
 	int direction;
 	Vec2f accela;
