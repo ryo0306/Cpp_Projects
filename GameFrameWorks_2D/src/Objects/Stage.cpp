@@ -373,12 +373,11 @@ void Stage::Goal() {
 void Stage::GoalDraw() {
   const float Size = 512.0f;
   const auto texture = Asset().Find().Texture(goalID[drawID]);
-  drawTextureBox(goal.pos.x(), goal.pos.y(),
-                 goal.size.x(), goal.size.y(),
-                 0, 0, Size, Size, *texture,
-                 Color::white,
+  const auto pos = goal.pos + goal.size * 0.5f;
+  drawTextureBox(pos.x(), pos.y(), goal.size.x(), goal.size.y(),
+                 0, 0, Size, Size, *texture, Color::white,
                  direction * (M_PI / 2),
-                 Vec2f::Ones(), Vec2f::Zero());
+                 Vec2f::Ones(), goal.size * 0.5f);
 }
 
 
