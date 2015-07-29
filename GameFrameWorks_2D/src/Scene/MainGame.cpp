@@ -39,7 +39,7 @@ SceneBase(SceneName::Main, SceneName::Result) {
 
   // ギミック設置
   switch (stageID) {
-  default:;
+  
     case StageID::Stage1:
       gimmickSize = std::make_shared<const float>(80.0f);
 
@@ -55,7 +55,7 @@ SceneBase(SceneName::Main, SceneName::Result) {
       gimmicks.push_back(StageGimmick(GravityDirection::Left,
         Vec2f(0, 1.5f), Vec2f::Ones() * 0.8f));
       break;
-    
+    default:;
     case StageID::Stage2:
       gimmickSize = std::make_shared<const float>(50.0f);
 
@@ -74,9 +74,34 @@ SceneBase(SceneName::Main, SceneName::Result) {
       gimmicks.push_back(StageGimmick(GravityDirection::Left,
         Vec2f(6.5, -0.5f), Vec2f::Ones() * 1));
       break;
-
+    
     case StageID::Stage3:
       gimmickSize = std::make_shared<const float>(50.0f);
+
+      gimmicks.push_back(StageGimmick(GravityDirection::Bottom,
+        Vec2f(-7, 3.5), Vec2f::Ones() * 1));
+      gimmicks.push_back(StageGimmick(GravityDirection::Right,
+        Vec2f(-10.5, 4.5), Vec2f::Ones() * 1));
+      gimmicks.push_back(StageGimmick(GravityDirection::Bottom,
+        Vec2f(-4.5, 4.5), Vec2f::Ones() * 1));
+      gimmicks.push_back(StageGimmick(GravityDirection::Right,
+        Vec2f(-4.5, -0), Vec2f::Ones() * 1));
+      gimmicks.push_back(StageGimmick(GravityDirection::Right,
+        Vec2f(-9, -7), Vec2f::Ones() * 1));
+      gimmicks.push_back(StageGimmick(GravityDirection::Left,
+        Vec2f(-2, -7), Vec2f::Ones() * 1));
+      gimmicks.push_back(StageGimmick(GravityDirection::Left,
+        Vec2f(8.5, 5), Vec2f::Ones() * 1));
+      gimmicks.push_back(StageGimmick(GravityDirection::Left,
+        Vec2f(0, 0), Vec2f::Ones() * 1));
+      gimmicks.push_back(StageGimmick(GravityDirection::Top,
+        Vec2f(7.5, 0), Vec2f::Ones() * 1));
+      gimmicks.push_back(StageGimmick(GravityDirection::Right,
+        Vec2f(6.5, -5), Vec2f::Ones() * 1));
+      gimmicks.push_back(StageGimmick(GravityDirection::Bottom,
+        Vec2f(5.5, 2.5), Vec2f::Ones() * 1));
+      gimmicks.push_back(StageGimmick(GravityDirection::Top,
+        Vec2f(6.5, -7), Vec2f::Ones() * 1));
       break;
   }
 
@@ -88,7 +113,9 @@ SceneBase(SceneName::Main, SceneName::Result) {
 
   // BGM, SE のテーブル
   const std::string MediaTable[] = {
-    "res/wav/stage.wav",
+    "res/wav/stage1.wav",
+    "res/wav/stage2.wav",
+    "res/wav/stage3.wav",
     "res/wav/switch.wav",
     "res/wav/goal.wav",
     "res/wav/fall.wav",
@@ -107,15 +134,21 @@ SceneBase(SceneName::Main, SceneName::Result) {
   }
 
   // BGM のみ、ループ再生を許可
-  auto bgm = Asset().Find().Media(mediaID[0]);
-  bgm->looping(true);
-  bgm->play();
+  auto bgm1 = Asset().Find().Media(mediaID[0]);
+  bgm1->looping(true);
+  bgm1->play();
+  auto bgm2 = Asset().Find().Media(mediaID[1]);
+  bgm2->looping(true);
+  bgm2->play();
+  auto bgm3 = Asset().Find().Media(mediaID[2]);
+  bgm3->looping(true);
+  bgm3->play();
 
   // プレイヤーとゴールの座標を設定
   float playerScale;
   float goalScale;
   switch (stageID) {
-  default:;
+  
     case StageID::Stage1:
       playerScale = 50.0f;
       goalScale = 150.0f;
@@ -125,22 +158,22 @@ SceneBase(SceneName::Main, SceneName::Result) {
                       GravityDirection::Bottom);
       break;
    
-   
+    default:;
     case StageID::Stage2:
       playerScale = 50.0f;
       goalScale = 80.0f;
 
       player.Start(Vec2f(-5.5,-3.5) * playerScale, playerScale);
-      stage.GoalSetup({ Vec2f(3.75, -2.5) * goalScale, Vec2f::Ones() * goalScale * 1.5, 0 },
+      stage.GoalSetup({ Vec2f(2.5, -2.5) * goalScale, Vec2f::Ones() * goalScale * 1.5, 0 },
                       GravityDirection::Right);
       break;
-
+    
     case StageID::Stage3:
       playerScale = 50.0f;
       goalScale = 80.0f;
 
-      player.Start(Vec2f(0, 0) * playerScale, playerScale);
-      stage.GoalSetup({ Vec2f(0, 0) * goalScale, Vec2f::Ones() * goalScale, 0 },
+      player.Start(Vec2f(1, 0) * playerScale, playerScale);
+      stage.GoalSetup({ Vec2f(0, -2) * goalScale, Vec2f::Ones() * goalScale * 1.5, 0 },
                       GravityDirection::Top);
       break;
   }
@@ -168,7 +201,7 @@ void MainGame::Update() {
       player.SetGravityDirection(gimmick.GetDirection());
       player.GravityReset();
       ++GameData::Get().GimmickCounter();
-      Asset().Find().Media(mediaID[3])->play();
+      Asset().Find().Media(mediaID[5])->play();
     }
   }
 
