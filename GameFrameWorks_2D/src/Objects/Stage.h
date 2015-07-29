@@ -7,12 +7,6 @@
 namespace frameworks {
 namespace object {
 
-struct Block {
-  Vec2f pos, size;
-  u_int id;
-};
-typedef std::vector<Block>  Blocks;
-
 class Stage {
 public:
   Stage();

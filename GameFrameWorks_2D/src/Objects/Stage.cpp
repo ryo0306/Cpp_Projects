@@ -26,23 +26,109 @@ Stage::Stage() {
   for (auto& data : TextureTable) {
     textureID.push_back(Asset().Append().Texture(data));
   }
-  
+
   // ステージの初期化
   switch (GameData::Get().GetStageID()) {
     default: // *Debug Mode Only* Initialized Stage Data.
+
     case StageID::Stage1:
+      // 左
+      blocks.push_back({ Vec2f(-600, 250), Vec2f(100, 100), textureID[5] });
+      blocks.push_back({ Vec2f(-600, 150), Vec2f(100, 100), textureID[3] });
+      blocks.push_back({ Vec2f(-600, 50), Vec2f(100, 100), textureID[3] });
+      blocks.push_back({ Vec2f(-600, -50), Vec2f(100, 100), textureID[3] });
+      blocks.push_back({ Vec2f(-600, -150), Vec2f(100, 100), textureID[3] });
+      blocks.push_back({ Vec2f(-600, -250), Vec2f(100, 100), textureID[4] });
+      blocks.push_back({ Vec2f(-500, -250), Vec2f(100, 100), textureID[0] });
+      blocks.push_back({ Vec2f(-400, -250), Vec2f(100, 100), textureID[0] });
+      blocks.push_back({ Vec2f(-300, -250), Vec2f(100, 100), textureID[5] });
+      blocks.push_back({ Vec2f(-300, -350), Vec2f(100, 100), textureID[4] });
+      blocks.push_back({ Vec2f(-200, -350), Vec2f(100, 100), textureID[0] });
+      blocks.push_back({ Vec2f(-100, -350), Vec2f(100, 100), textureID[0] });
+      blocks.push_back({ Vec2f(0, -350), Vec2f(100, 100), textureID[0] });
+      blocks.push_back({ Vec2f(100, -350), Vec2f(100, 100), textureID[5] });
 
-      // 画像 ID の取り出し方
-      // textureID[] に、上記テーブル表に対応した番号を入れると ID が入っています
-
-      // textureID[0] で、上を歩けるブロックを取り出せる
-      // 左を歩けるブロックは、textureID[1] で取り出せます
-      // こんな感じで使いたい画像の ID を紐づけしてください
-      blocks.push_back({ Vec2f(0, 0), Vec2f(100, 100), textureID[0] });
-
+      // 右
+      blocks.push_back({ Vec2f(400, -350), Vec2f(100, 100), textureID[7] });
+      blocks.push_back({ Vec2f(400, -250), Vec2f(100, 100), textureID[1] });
+      blocks.push_back({ Vec2f(400, -150), Vec2f(100, 100), textureID[1] });
+      blocks.push_back({ Vec2f(400, -50), Vec2f(100, 100), textureID[1] });
+      blocks.push_back({ Vec2f(400, 50), Vec2f(100, 100), textureID[1] });
+      blocks.push_back({ Vec2f(400, 150), Vec2f(100, 100), textureID[1] });
+      blocks.push_back({ Vec2f(400, 250), Vec2f(100, 100), textureID[4] });
+      blocks.push_back({ Vec2f(300, 250), Vec2f(100, 100), textureID[2] });
+      blocks.push_back({ Vec2f(200, 250), Vec2f(100, 100), textureID[2] });
+      blocks.push_back({ Vec2f(100, 250), Vec2f(100, 100), textureID[2] });
+      blocks.push_back({ Vec2f(0, 250), Vec2f(100, 100), textureID[7] });
       break;
 
     case StageID::Stage2:
+      // 左下スタート地点
+      blocks.push_back({ Vec2f(-600, -250), Vec2f(50, 50), textureID[0] });
+      blocks.push_back({ Vec2f(-550, -250), Vec2f(50, 50), textureID[0] });
+      blocks.push_back({ Vec2f(-500, -250), Vec2f(50, 50), textureID[0] });
+      blocks.push_back({ Vec2f(-450, -250), Vec2f(50, 50), textureID[0] });
+      blocks.push_back({ Vec2f(-350, -250), Vec2f(50, 50), textureID[0] });
+      blocks.push_back({ Vec2f(-300, -250), Vec2f(50, 50), textureID[0] });
+      blocks.push_back({ Vec2f(-600, -250), Vec2f(50, 50), textureID[0] });
+      blocks.push_back({ Vec2f(-550, -250), Vec2f(50, 50), textureID[0] });
+      blocks.push_back({ Vec2f(-500, -250), Vec2f(50, 50), textureID[0] });
+      blocks.push_back({ Vec2f(-450, -250), Vec2f(50, 50), textureID[0] });
+      blocks.push_back({ Vec2f(-400, -250), Vec2f(50, 50), textureID[0] });
+      blocks.push_back({ Vec2f(-350, -250), Vec2f(50, 50), textureID[0] });
+
+      // 真ん中下
+      blocks.push_back({ Vec2f(-200, -350), Vec2f(50, 50), textureID[0] });
+      blocks.push_back({ Vec2f(-150, -350), Vec2f(50, 50), textureID[0] });
+      blocks.push_back({ Vec2f(-100, -350), Vec2f(50, 50), textureID[0] });
+      blocks.push_back({ Vec2f(-100, -300), Vec2f(50, 50), textureID[0] });
+      blocks.push_back({ Vec2f(-100, -250), Vec2f(50, 50), textureID[0] });
+      blocks.push_back({ Vec2f(-100, -200), Vec2f(50, 50), textureID[0] });
+      blocks.push_back({ Vec2f(-50, -200), Vec2f(50, 50), textureID[0] });
+      blocks.push_back({ Vec2f(0, -200), Vec2f(50, 50), textureID[0] });
+      blocks.push_back({ Vec2f(50, -200), Vec2f(50, 50), textureID[0] });
+      blocks.push_back({ Vec2f(100, -200), Vec2f(50, 50), textureID[0] });
+
+      // 右下
+      blocks.push_back({ Vec2f(300, -350), Vec2f(50, 50), textureID[0] });
+      blocks.push_back({ Vec2f(350, -350), Vec2f(50, 50), textureID[0] });
+      blocks.push_back({ Vec2f(400, -350), Vec2f(50, 50), textureID[0] });
+      blocks.push_back({ Vec2f(450, -350), Vec2f(50, 50), textureID[0] });
+      blocks.push_back({ Vec2f(500, -350), Vec2f(50, 50), textureID[0] });
+
+      // 左上
+      blocks.push_back({ Vec2f(-450, 200), Vec2f(50, 50), textureID[0] });
+      blocks.push_back({ Vec2f(-400, 200), Vec2f(50, 50), textureID[0] });
+      blocks.push_back({ Vec2f(-350, 200), Vec2f(50, 50), textureID[0] });
+      blocks.push_back({ Vec2f(-300, 200), Vec2f(50, 50), textureID[0] });
+      blocks.push_back({ Vec2f(-250, 200), Vec2f(50, 50), textureID[0] });
+      blocks.push_back({ Vec2f(-200, 200), Vec2f(50, 50), textureID[0] });
+      blocks.push_back({ Vec2f(-150, 200), Vec2f(50, 50), textureID[0] });
+
+      // 真ん中左
+      blocks.push_back({ Vec2f(-150, 50), Vec2f(50, 50), textureID[0] });
+      blocks.push_back({ Vec2f(-150, 0), Vec2f(50, 50), textureID[0] });
+
+      // 真ん中右
+      blocks.push_back({ Vec2f(100, -50), Vec2f(50, 50), textureID[0] });
+      blocks.push_back({ Vec2f(150, -50), Vec2f(50, 50), textureID[0] });
+      blocks.push_back({ Vec2f(200, -50), Vec2f(50, 50), textureID[0] });
+      blocks.push_back({ Vec2f(250, -50), Vec2f(50, 50), textureID[0] });
+      blocks.push_back({ Vec2f(300, -50), Vec2f(50, 50), textureID[0] });
+      blocks.push_back({ Vec2f(300, -0), Vec2f(50, 50), textureID[0] });
+
+      // 真ん中上
+      blocks.push_back({ Vec2f(150, 100), Vec2f(50, 50), textureID[0] });
+      blocks.push_back({ Vec2f(150, 150), Vec2f(50, 50), textureID[0] });
+      blocks.push_back({ Vec2f(200, 150), Vec2f(50, 50), textureID[0] });
+      blocks.push_back({ Vec2f(250, 150), Vec2f(50, 50), textureID[0] });
+      blocks.push_back({ Vec2f(300, 150), Vec2f(50, 50), textureID[0] });
+      blocks.push_back({ Vec2f(350, 150), Vec2f(50, 50), textureID[0] });
+
+      // 左上
+      blocks.push_back({ Vec2f(50, 300), Vec2f(50, 50), textureID[0] });
+      blocks.push_back({ Vec2f(100, 300), Vec2f(50, 50), textureID[0] });
+      blocks.push_back({ Vec2f(150, 300), Vec2f(50, 50), textureID[0] });
       break;
 
     case StageID::Stage3:

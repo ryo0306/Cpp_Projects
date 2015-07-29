@@ -10,6 +10,12 @@
 namespace frameworks {
 namespace object {
 
+struct Block {
+  Vec2f pos, size;
+  u_int id;
+};
+typedef std::vector<Block>  Blocks;
+
 enum ObjectState {
   ALIVE = -1,
   DEAD = 0,
@@ -19,7 +25,7 @@ enum ObjectState {
 
 class Object {
 public:
-  Object(const Vec2f& pos) : deadTime(ALIVE) {}
+  Object() : deadTime(ALIVE) {}
   virtual ~Object() = default;
 
   virtual void Update() {}

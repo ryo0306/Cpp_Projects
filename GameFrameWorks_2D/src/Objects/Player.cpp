@@ -1,136 +1,206 @@
 
 #include "Player.h"
 
+using namespace frameworks;
 using namespace frameworks::object;
 
 
-Player::Player(const Vec2f& pos) : Object(pos) {
-	transform.pos = pos;
-	transform.scale = Vec2f(100, 100);
-	time = 0;
-	direction = Bottom;
-	accela = Vec2f(0.5, 0.5);
-	velocity = Vec2f(0, 0);
+Player::Player() :
+time(0),
+gravityState(GravityDirection::Bottom),
+direction(Move_R),
+acceleration(0.25f),
+velocity(0.0f) {
+  textureID.clear();
+
+  transform.scale = Vec2f::Ones() * 50.0f;
+  transform.rotate = transform.angle = 0.0f;
+
+  const std::string TextureTable[] = {
+    "res/png/ochirukun_red.png",
+    "res/png/ochirukun_blue.png",
+    "res/png/ochirukun_yellow.png",
+    "res/png/ochirukun_green.png",
+  };
+
+  for (const auto& data : TextureTable) {
+    textureID.push_back(Asset().Append().Texture(data));
+  }
 }
 
+
 void Player::Update() {
-	
-	//  移動処理
-	//  重力が上下だった場合
-	if (direction == GravityDirection::Top || direction == GravityDirection::Bottom){
-		if (Env().isPressKey(KEY_L)){
-			transform.pos.x() -= Move;
-		}
-		if (Env().isPressKey(KEY_R)){
-			transform.pos.x() += Move;
-		}
-	}
+  using namespace utility;
 
-	//  重力が左右だった場合
-	if (direction == GravityDirection::Right || direction == GravityDirection::Left){
-		if (Env().isPressKey(KEY_U)){
-			transform.pos.y() += Move;
-		}
-		if (Env().isPressKey(KEY_D)){
-			transform.pos.y() -= Move;
-		}
-	}
+  // キー入力有効のタイムカウンタを減らす
+  if (IsKeyActive()) time--;
 
-	//  ギミック発動
-	//  5フレームは発動しない
-	if (time == 0){
-		if (Env().isPushKey(SPACE)){
-			if (direction == GravityDirection::Bottom){
-				direction = GravityDirection::Left;
-			}
-			else if (direction == GravityDirection::Left){
-				direction = GravityDirection::Top;
-			}
-			else if (direction == GravityDirection::Top){
-				direction = GravityDirection::Right;
-			}
-			else if (direction == GravityDirection::Right){
-				direction = GravityDirection::Bottom;
-			}
-			GravityReset();
-			time = KeyActiveTime;
-		}
-	}
+  // ギミック発動
+  // 5 フレームは発動しない
+  if (!IsKeyActive() && Env().isPushKey(SPACE)) {
+    time = KeyActiveTime;
+  }
 
+  // 重力
+  GravityUpdate();
 
+  // ブロックとの衝突判定
+  bool isHit = false;
+  bool enableMove = false;
 
-	
+  const auto& pos = transform.pos;
+  const auto& size = transform.scale;
 
-	if (direction == GravityDirection::Top){
-		transform.pos.y() += velocity.y();
-	}
+  for (auto& block : stageBlocks) {
+    isHit = IsHitRectToRect(pos, size, block.pos, block.size);
+    if (!isHit) continue;
 
-	if (direction == GravityDirection::Right){
-		transform.pos.x() += velocity.x();
-	}
+    velocity -= acceleration;
+    switch (gravityState) {
+      case GravityDirection::Top:
+        transform.pos.y() -= velocity;
+        break;
 
-	if (direction == GravityDirection::Bottom){
-		transform.pos.y() -= velocity.y();
-	}
+      case GravityDirection::Bottom:
+        transform.pos.y() += velocity;
+        break;
 
-	if (direction == GravityDirection::Left){
-		transform.pos.x() -= velocity.x();
-	}
+      case GravityDirection::Left:
+        transform.pos.x() += velocity;
+        break;
 
+      case GravityDirection::Right:
+        transform.pos.x() -= velocity;
+        break;
 
-	velocity += accela;
+      default: break;
+    }
 
-	if (transform.pos.y() <= -400)
-	{
-		transform.pos.y() = -400;
-	}
+    GravityReset();
+    enableMove = true;
+  }
 
-	if (transform.pos.y() >= 400)
-	{
-		transform.pos.y() = 400;
-	}
+  if (!isHit && !enableMove) return;
 
-	if (transform.pos.x() <= -400)
-	{
-		transform.pos.x() = -400;
-	}
-
-	if (transform.pos.x() >= 400)
-	{
-		transform.pos.x() = 400;
-	}
-
-
-	//  timeが0以下にならないように
-	if (time > 0) time--;
+  // 移動処理
+  if (gravityState == GravityDirection::Top ||
+      gravityState == GravityDirection::Bottom) {
+    if (Env().isPressKey(KEY_L)) { Move(Vec2f(-MoveSpeed, 0)); }
+    if (Env().isPressKey(KEY_R)) { Move(Vec2f(MoveSpeed, 0)); }
+  }
+  if (gravityState == GravityDirection::Left ||
+      gravityState == GravityDirection::Right) {
+    if (Env().isPressKey(KEY_D)) { Move(Vec2f(0, -MoveSpeed)); }
+    if (Env().isPressKey(KEY_U)) { Move(Vec2f(0, MoveSpeed)); }
+  }
 }
 
 
 void Player::Draw() {
-	drawFillBox(transform.pos.x(),transform.pos.y(),
-				transform.scale.x(),transform.scale.y(),Color::red);
+  const float Size = 512.0f;
+  const auto texture = Asset().Find().Texture(gravityState);
+  const auto pos = transform.pos + transform.scale * 0.5f;
+
+  drawTextureBox(pos.x(), pos.y(),
+                 transform.scale.x(), transform.scale.y(),
+                 0, 0, Size, Size,
+                 *texture, Color::white,
+                 gravityState * (M_PI / 2),
+                 Vec2f(direction, 1),
+                 transform.scale * 0.5f);
 }
 
 
-void Player::GravityReset(){
-	velocity = Vec2f(0, 0);
+void Player::GravityUpdate() {
+  switch (gravityState) {
+    case GravityDirection::Top:
+      transform.pos.y() += velocity;
+      break;
+
+    case GravityDirection::Bottom:
+      transform.pos.y() -= velocity;
+      break;
+
+    case GravityDirection::Left:
+      transform.pos.x() -= velocity;
+      break;
+
+    case GravityDirection::Right:
+      transform.pos.x() += velocity;
+      break;
+
+    default: break;
+  }
+
+  velocity += acceleration;
+  if (velocity > 10.0f) velocity = 10.0f;
 }
 
-void Player::Translate(frameworks::Transform transform){
 
-  if (direction == Top){
-    this->transform.pos.y() -= velocity.y()-accela.y();
+void Player::Move(const Vec2f& moveSpeed) {
+  switch (gravityState) {
+    case GravityDirection::Top:
+      direction = moveSpeed.x() > 0 ? Move_L : Move_R;
+      break;
+
+    case GravityDirection::Bottom:
+      direction = moveSpeed.x() > 0 ? Move_R : Move_L;
+      break;
+
+    case GravityDirection::Left:
+      direction = moveSpeed.y() > 0 ? Move_L : Move_R;
+      break;
+
+    case GravityDirection::Right:
+      direction = moveSpeed.y() > 0 ? Move_R : Move_L;
+      break;
+
+    default: break;
   }
 
-  if (direction == Right){
-    this->transform.pos.x() -= velocity.x() - accela.x();
-  }
-  if (direction == Bottom){
-    this->transform.pos.y() += velocity.y() - accela.y();
-  }
-  if (direction == Left){
-    this->transform.pos.x() += velocity.x() - accela.x();
+  transform.pos += moveSpeed;
+  if (DisableMove()) { transform.pos -= moveSpeed; }
+}
+
+
+const bool Player::DisableMove() {
+  using namespace utility;
+  const auto& Pos = transform.pos;
+  const auto& Size = transform.scale;
+
+  bool hitL, hitR, hitT, hitB;
+  hitL = hitR = hitT = hitB = false;
+
+  for (auto& block : stageBlocks) {
+    const bool hit = IsHitRectToRect(Pos, Size,
+                                     block.pos, block.size);
+
+    if (!hit) continue;
+
+    switch (gravityState) {
+      case GravityDirection::Top:
+        hitL = (Pos.x() + Size.x()) > block.pos.x();
+        hitR = Pos.x() < (block.pos.x() + block.size.x());
+        return hitL && hitR;
+
+      case GravityDirection::Bottom:
+        hitR = (Pos.x() + Size.x()) > block.pos.x();
+        hitL = Pos.x() < (block.pos.x() + block.size.x());
+        return hitL && hitR;
+
+      case GravityDirection::Left:
+        hitT = (Pos.y() + Size.y()) > block.pos.y();
+        hitB = Pos.y() < (block.pos.y() + block.size.y());
+        return hitB && hitT;
+
+      case GravityDirection::Right:
+        hitB = (Pos.y() + Size.y()) > block.pos.y();
+        hitT = Pos.y() < (block.pos.y() + block.size.y());
+        return hitB && hitT;
+
+      default:;
+    }
   }
 
-   
+  return false;
 }

@@ -8,17 +8,18 @@ namespace object {
 
 class StageGimmick {
 public:
-  StageGimmick(int direction, Vec2f pos);
+  StageGimmick(const int, const Vec2f&);
 
   void Draw();
-  Transform GetTransform(){ return transform; }
-  int GetDirection(){ return direction; }
+
+  const Transform& GetTransform() const { return transform; }
+  const int GetDirection() const { return direction; }
 
 private:
-	Transform transform;
-	int direction;
+  Transform transform;
+  int direction;
 
-	Color GetColor();
+  Color GetColor();
 };
 
 }

@@ -36,21 +36,14 @@ void DrawTexture(const Transform& transform,
                  transform.rotate, transform.scale, origin);
 }
 
-bool IsHitRectToRect(const Transform& obj1,
-                     const Transform& obj2) {
-  const auto& obj1Pos = obj1.pos;
-  const auto& obj1Size = obj1.scale;
-  const auto& obj2Pos = obj2.pos;
-  const auto& obj2Size = obj2.scale;
+bool IsHitRectToRect(const Vec2f& pos1, const Vec2f& size1,
+                     const Vec2f& pos2, const Vec2f& size2) {
+  const bool hitL = pos1.x() + size1.x() > pos2.x();
+  const bool hitR = pos1.x() < pos2.x() + size2.x();
+  const bool hitB = pos1.y() + size1.y() > pos2.y();
+  const bool hitT = pos1.y() < pos2.y() + size2.y();
 
-  //const bool hitL = (obj2Pos.x() - (obj1Pos.x() + obj1Size.x())) < 0;
-  const bool hitL = obj1Pos.x() + obj1Size.x() > obj2Pos.x();
-  const bool hitR = obj1Pos.x() < obj2Pos.x() + obj2Size.x();
-
-  const bool hitT = obj1Pos.y() < obj2Pos.y() + obj2Size.y();
-  const bool hitB = obj1Pos.y() + obj1Size.y() > obj2Pos.y();
-
-  return ((hitL && hitR) && (hitT && hitB)) || ((hitL && hitR) && (hitT && hitB));
+  return (hitL && hitR && hitB && hitT);
 }
 
 }  // end utility

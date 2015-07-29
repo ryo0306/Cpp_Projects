@@ -14,9 +14,8 @@ public:
   void Draw() override;
 
 private:
-  // •K—v‚È•Ï”AŠÖ”‚ğ‚±‚±‚Éì‚é
-  u_int textureID;
-  u_int mediaID;
+  std::vector<u_int> textureID;
+  std::vector<u_int> mediaID;
 };
 
 }  // end scene

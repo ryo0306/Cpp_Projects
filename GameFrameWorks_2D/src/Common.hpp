@@ -15,25 +15,29 @@ enum WindowSize {
 enum KeyBind {
   ESCAPE = GLFW_KEY_ESCAPE,
   ENTER  = GLFW_KEY_ENTER,
-  KEY_L = GLFW_KEY_LEFT,
-  KEY_R = GLFW_KEY_RIGHT,
-  KEY_U = GLFW_KEY_UP,
-  KEY_D = GLFW_KEY_DOWN,
-  SPACE = GLFW_KEY_SPACE,
+  KEY_L  = GLFW_KEY_LEFT,
+  KEY_R  = GLFW_KEY_RIGHT,
+  KEY_U  = GLFW_KEY_UP,
+  KEY_D  = GLFW_KEY_DOWN,
+  SPACE  = GLFW_KEY_SPACE,
 };
 
-enum GravityDirection{
-	Top,
-	Right,
-	Bottom,
-	Left,
+enum GravityDirection {
+  Bottom,
+  Right,
+  Top,
+  Left,
+};
+
+enum PlayerDirection {
+  Move_L = -1,
+  Move_R = 1,
 };
 
 // 座標、サイズ、回転状態、回転速度
 struct Transform {
   Vec2f pos, scale;
-  float rotate;
-  float angle;
+  float rotate, angle;
 };
 
 // 画像、切り出し開始位置、切り取りサイズ、色

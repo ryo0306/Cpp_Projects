@@ -21,8 +21,8 @@ bool IsHitPointToCircle(const Vec2f& point,
 */
 
 // éläpÇ∆éläp
-bool IsHitRectToRect(const Transform& obj1,
-                     const Transform& obj2);
+bool IsHitRectToRect(const Vec2f&, const Vec2f&,
+                     const Vec2f&, const Vec2f&);
 
 }  // end utility
 }  // end frameworks

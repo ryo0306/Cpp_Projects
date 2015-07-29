@@ -16,10 +16,11 @@ public:
   void Draw() override;
 
 private:
-  // •K—v‚È•Ï”AŠÖ”‚ğ‚±‚±‚Éì‚é
-  object::Stage stage;
 	object::Player player;
-	object::StageGimmick gimmick;
+  object::Stage stage;
+  std::vector<object::StageGimmick> gimmicks;
+
+  std::vector<u_int> mediaID;
 };
 
 }  // end scene
