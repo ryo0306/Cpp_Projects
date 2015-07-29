@@ -16,6 +16,9 @@ public:
 private:
   std::vector<u_int> textureID;
   std::vector<u_int> mediaID;
+
+  u_int select;
+  std::vector<u_int> icons;
 };
 
 }  // end scene

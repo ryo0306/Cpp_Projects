@@ -145,6 +145,12 @@ void MainGame::Update() {
       Asset().Find().Media(mediaID[3])->play();
     }
   }
+
+  const auto goal = stage.GetGoalPos();
+  if (IsHitRectToRect(playerPos, playerSize, goal.pos, goal.size)) {
+    isFinish = true;
+    Asset().Find().Media(mediaID[0])->stop();
+  }
 }
 
 
