@@ -14,7 +14,7 @@ using namespace frameworks::scene;
 int main() {
   ApplicationSetup();
 
-  GamePlayer game(SceneName::Result);
+  GamePlayer game(SceneName::Title);
   while (game.IsRunning()) {
     utility::FrameUpdate();
     game.Update();
