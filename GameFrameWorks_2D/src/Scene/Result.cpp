@@ -62,32 +62,29 @@ void Result::Update() {
 // 描画
 void Result::Draw() {
 
-
-  //クリア時ギミック使用回数
-  u_int count = 3;
+  // クリア時ギミック使用回数
+  u_int count = GameData::Get().GimmickCounter();
 
   bool get_medal = false;
-  
-  //ステージごとにメダル獲得かいっ数を調べる
-  switch (GameData::Get().GetStageID())
-  {
-  case StageID::Stage1:
+
+  // ステージごとにメダル獲得かいっ数を調べる
+  switch (GameData::Get().GetStageID()) {
+    default:;
+    case StageID::Stage1:
       get_medal = count <= 4;
-    break;
-  case StageID::Stage2:
+      break;
+
+    case StageID::Stage2:
       get_medal = count <= 4;
-    break;
-  case StageID::Stage3:
-    get_medal = count <= 9;
-    break;
-  default:
-    break;
+      break;
+
+    case StageID::Stage3:
+      get_medal = count <= 9;
+      break;
   }
 
-  get_medal = true;
-
-  //メダル有か無を判定
-  if (get_medal){
+  // メダル有か無を判定
+  if (get_medal) {
     const auto result_medal = Asset().Find().Texture(textureID[10]);
     drawTextureBox(-800, -450, 1600, 900, 0, 0, 1600, 900, *result_medal);
     const auto medal = Asset().Find().Texture(textureID[12]);
@@ -98,18 +95,13 @@ void Result::Draw() {
     drawTextureBox(-800, -450, 1600, 900, 0, 0, 1600, 900, *result_no_medal);
   }
 
-  //数字
-    const auto num_1 = Asset().Find().Texture(textureID[count % 10]);
-    drawTextureBox(-580, -500, 480, 480, 0, 0, 512, 512, *num_1);
-  
-
-    if (count / 10){
-      const auto num_2 = Asset().Find().Texture(textureID[count / 10]);
-      drawTextureBox(-760, -500, 480, 480, 0, 0, 512, 512, *num_2);
-    }
+  // 数字
+  const auto num_1 = Asset().Find().Texture(textureID[count % 10]);
+  drawTextureBox(-580, -500, 480, 480, 0, 0, 512, 512, *num_1);
 
 
- 
-
-  
+  if (count / 10) {
+    const auto num_2 = Asset().Find().Texture(textureID[count / 10]);
+    drawTextureBox(-760, -500, 480, 480, 0, 0, 512, 512, *num_2);
+  }
 }

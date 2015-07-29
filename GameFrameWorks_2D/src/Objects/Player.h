@@ -26,7 +26,7 @@ public:
 
 private:
   enum {
-    KeyActiveTime = 5,
+    KeyActiveTime = 1,
     MoveSpeed = 10,
   };
 	
