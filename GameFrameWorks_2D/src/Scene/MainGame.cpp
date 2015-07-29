@@ -136,13 +136,10 @@ SceneBase(SceneName::Main, SceneName::Result) {
   // BGM のみ、ループ再生を許可
   auto bgm1 = Asset().Find().Media(mediaID[0]);
   bgm1->looping(true);
-  bgm1->play();
   auto bgm2 = Asset().Find().Media(mediaID[1]);
   bgm2->looping(true);
-  bgm2->play();
   auto bgm3 = Asset().Find().Media(mediaID[2]);
   bgm3->looping(true);
-  bgm3->play();
 
   // プレイヤーとゴールの座標を設定
   float playerScale;
@@ -152,6 +149,7 @@ SceneBase(SceneName::Main, SceneName::Result) {
     case StageID::Stage1:
       playerScale = 50.0f;
       goalScale = 150.0f;
+      bgm1->play();
 
       player.Start(Vec2f(-2, -2.5) * playerScale, playerScale);
       stage.GoalSetup({ Vec2f(-2.0, -1) * goalScale, Vec2f::Ones() * goalScale, 0 },
@@ -162,6 +160,7 @@ SceneBase(SceneName::Main, SceneName::Result) {
     case StageID::Stage2:
       playerScale = 50.0f;
       goalScale = 80.0f;
+      bgm2->play();
 
       player.Start(Vec2f(-5.5,-3.5) * playerScale, playerScale);
       stage.GoalSetup({ Vec2f(2.5, -2.5) * goalScale, Vec2f::Ones() * goalScale * 1.5, 0 },
@@ -171,6 +170,7 @@ SceneBase(SceneName::Main, SceneName::Result) {
     case StageID::Stage3:
       playerScale = 50.0f;
       goalScale = 80.0f;
+      bgm3->play();
 
       player.Start(Vec2f(1, 0) * playerScale, playerScale);
       stage.GoalSetup({ Vec2f(0, -2) * goalScale, Vec2f::Ones() * goalScale * 1.5, 0 },
@@ -209,6 +209,8 @@ void MainGame::Update() {
   if (IsHitRectToRect(playerPos, playerSize, goal.pos, goal.size)) {
     isFinish = true;
     Asset().Find().Media(mediaID[0])->stop();
+    Asset().Find().Media(mediaID[1])->stop();
+    Asset().Find().Media(mediaID[2])->stop();
   }
 }
 

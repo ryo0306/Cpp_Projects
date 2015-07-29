@@ -85,13 +85,13 @@ void Result::Draw() {
 
   // ƒƒ_ƒ‹—L‚©–³‚ğ”»’è
   if (get_medal) {
-    const auto result_medal = Asset().Find().Texture(textureID[10]);
+    const auto result_medal = Asset().Find().Texture(textureID[11]);
     drawTextureBox(-800, -450, 1600, 900, 0, 0, 1600, 900, *result_medal);
     const auto medal = Asset().Find().Texture(textureID[12]);
     drawTextureBox(-170, -325, 512, 512, 0, 0, 512, 512, *medal);
   }
   else {
-    const auto result_no_medal = Asset().Find().Texture(textureID[11]);
+    const auto result_no_medal = Asset().Find().Texture(textureID[10]);
     drawTextureBox(-800, -450, 1600, 900, 0, 0, 1600, 900, *result_no_medal);
   }
 
