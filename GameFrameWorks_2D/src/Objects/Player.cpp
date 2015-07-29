@@ -33,6 +33,7 @@ void Player::Setup() {
 void Player::Start(const Vec2f& pos, const float size) {
   transform.pos = pos;
   transform.scale = Vec2f::Ones() * size;
+  start = pos;
 }
 
 
@@ -64,27 +65,38 @@ void Player::Update() {
 
     velocity -= acceleration;
     switch (gravityState) {
-      case GravityDirection::Top:
-        transform.pos.y() -= velocity;
-        break;
+    case GravityDirection::Top:
+      transform.pos.y() -= velocity;
+      break;
 
-      case GravityDirection::Bottom:
-        transform.pos.y() += velocity;
-        break;
+    case GravityDirection::Bottom:
+      transform.pos.y() += velocity;
+      break;
 
-      case GravityDirection::Left:
-        transform.pos.x() += velocity;
-        break;
+    case GravityDirection::Left:
+      transform.pos.x() += velocity;
+      break;
 
-      case GravityDirection::Right:
-        transform.pos.x() -= velocity;
-        break;
+    case GravityDirection::Right:
+      transform.pos.x() -= velocity;
+      break;
 
-      default: break;
+    default: break;
     }
 
     GravityReset();
     enableMove = true;
+  }
+
+  //âÊñ äOÇ…çsÇ¡ÇΩÇÁñﬂÇÈèàóù
+  const Vec2f window(1600, 900);
+
+  if (transform.pos.x() < -window.x() / 2 || transform.pos.x() > window.x() / 2 ||
+      transform.pos.y() < -window.y() / 2 || transform.pos.y() > window.y() / 2)
+  {
+    transform.pos = start;
+    gravityState = GravityDirection::Bottom;
+    GravityReset();
   }
 
   if (!isHit && !enableMove) return;
@@ -120,23 +132,23 @@ void Player::Draw() {
 
 void Player::GravityUpdate() {
   switch (gravityState) {
-    case GravityDirection::Top:
-      transform.pos.y() += velocity;
-      break;
+  case GravityDirection::Top:
+    transform.pos.y() += velocity;
+    break;
 
-    case GravityDirection::Bottom:
-      transform.pos.y() -= velocity;
-      break;
+  case GravityDirection::Bottom:
+    transform.pos.y() -= velocity;
+    break;
 
-    case GravityDirection::Left:
-      transform.pos.x() -= velocity;
-      break;
+  case GravityDirection::Left:
+    transform.pos.x() -= velocity;
+    break;
 
-    case GravityDirection::Right:
-      transform.pos.x() += velocity;
-      break;
+  case GravityDirection::Right:
+    transform.pos.x() += velocity;
+    break;
 
-    default: break;
+  default: break;
   }
 
   velocity += acceleration;
@@ -146,23 +158,23 @@ void Player::GravityUpdate() {
 
 void Player::Move(const Vec2f& moveSpeed) {
   switch (gravityState) {
-    case GravityDirection::Top:
-      direction = moveSpeed.x() > 0 ? Move_L : Move_R;
-      break;
+  case GravityDirection::Top:
+    direction = moveSpeed.x() > 0 ? Move_L : Move_R;
+    break;
 
-    case GravityDirection::Bottom:
-      direction = moveSpeed.x() > 0 ? Move_R : Move_L;
-      break;
+  case GravityDirection::Bottom:
+    direction = moveSpeed.x() > 0 ? Move_R : Move_L;
+    break;
 
-    case GravityDirection::Left:
-      direction = moveSpeed.y() > 0 ? Move_L : Move_R;
-      break;
+  case GravityDirection::Left:
+    direction = moveSpeed.y() > 0 ? Move_L : Move_R;
+    break;
 
-    case GravityDirection::Right:
-      direction = moveSpeed.y() > 0 ? Move_R : Move_L;
-      break;
+  case GravityDirection::Right:
+    direction = moveSpeed.y() > 0 ? Move_R : Move_L;
+    break;
 
-    default: break;
+  default: break;
   }
 
   transform.pos += moveSpeed;
@@ -185,27 +197,27 @@ const bool Player::DisableMove() {
     if (!hit) continue;
 
     switch (gravityState) {
-      case GravityDirection::Top:
-        hitL = (Pos.x() + Size.x()) > block.pos.x();
-        hitR = Pos.x() < (block.pos.x() + block.size.x());
-        return hitL && hitR;
+    case GravityDirection::Top:
+      hitL = (Pos.x() + Size.x()) > block.pos.x();
+      hitR = Pos.x() < (block.pos.x() + block.size.x());
+      return hitL && hitR;
 
-      case GravityDirection::Bottom:
-        hitR = (Pos.x() + Size.x()) > block.pos.x();
-        hitL = Pos.x() < (block.pos.x() + block.size.x());
-        return hitL && hitR;
+    case GravityDirection::Bottom:
+      hitR = (Pos.x() + Size.x()) > block.pos.x();
+      hitL = Pos.x() < (block.pos.x() + block.size.x());
+      return hitL && hitR;
 
-      case GravityDirection::Left:
-        hitT = (Pos.y() + Size.y()) > block.pos.y();
-        hitB = Pos.y() < (block.pos.y() + block.size.y());
-        return hitB && hitT;
+    case GravityDirection::Left:
+      hitT = (Pos.y() + Size.y()) > block.pos.y();
+      hitB = Pos.y() < (block.pos.y() + block.size.y());
+      return hitB && hitT;
 
-      case GravityDirection::Right:
-        hitB = (Pos.y() + Size.y()) > block.pos.y();
-        hitT = Pos.y() < (block.pos.y() + block.size.y());
-        return hitB && hitT;
+    case GravityDirection::Right:
+      hitB = (Pos.y() + Size.y()) > block.pos.y();
+      hitT = Pos.y() < (block.pos.y() + block.size.y());
+      return hitB && hitT;
 
-      default:;
+    default:;
     }
   }
 

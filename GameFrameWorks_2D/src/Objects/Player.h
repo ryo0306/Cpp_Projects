@@ -29,6 +29,8 @@ private:
     KeyActiveTime = 1,
     MoveSpeed = 10,
   };
+
+  Vec2f start;
 	
 	int time;
   u_int gravityState;
