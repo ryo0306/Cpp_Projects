@@ -145,7 +145,7 @@ SceneBase(SceneName::Main, SceneName::Result) {
   float playerScale;
   float goalScale;
   switch (stageID) {
-  
+    default:;
     case StageID::Stage1:
       playerScale = 50.0f;
       goalScale = 150.0f;
@@ -156,14 +156,13 @@ SceneBase(SceneName::Main, SceneName::Result) {
                       GravityDirection::Bottom);
       break;
    
-    default:;
     case StageID::Stage2:
       playerScale = 50.0f;
       goalScale = 80.0f;
       bgm2->play();
 
       player.Start(Vec2f(-5.5,-3.5) * playerScale, playerScale);
-      stage.GoalSetup({ Vec2f(2.5, -2.5) * goalScale, Vec2f::Ones() * goalScale * 1.5, 0 },
+      stage.GoalSetup({ Vec2f(2.2, -2.5) * goalScale, Vec2f::Ones() * goalScale * 1.5, 0 },
                       GravityDirection::Right);
       break;
     
@@ -207,6 +206,15 @@ void MainGame::Update() {
 
   const auto goal = stage.GetGoalPos();
   if (IsHitRectToRect(playerPos, playerSize, goal.pos, goal.size)) {
+    isFinish = true;
+    Asset().Find().Media(mediaID[0])->stop();
+    Asset().Find().Media(mediaID[1])->stop();
+    Asset().Find().Media(mediaID[2])->stop();
+  }
+
+  const auto Enter = Env().isPressKey(ENTER);
+  if (Env().isPushKey('R') && Enter) {
+    next = SceneName::Title;
     isFinish = true;
     Asset().Find().Media(mediaID[0])->stop();
     Asset().Find().Media(mediaID[1])->stop();
