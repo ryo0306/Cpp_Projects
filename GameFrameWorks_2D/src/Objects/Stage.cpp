@@ -8,8 +8,8 @@ void Stage::Setup() {
   const auto& stageID = GameData::Get().GetStageID();
 
   const std::string GoalTable[] = {
-    "res/png/nyu_ton1.png",
-    "res/png/nyu_ton1.png",
+    "res/png/newton1.png",
+    "res/png/newton2.png",
   };
 
   for (auto& data : GoalTable) {
