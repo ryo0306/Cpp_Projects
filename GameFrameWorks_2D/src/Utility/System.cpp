@@ -73,8 +73,8 @@ void ApplicationSetup() {
 }
 
 void ApplicationRelease() {
-  App::Get().Release();
   AssetRelease();
+  App::Get().Release();
 }
 
 namespace ut = utility;

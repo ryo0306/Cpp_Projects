@@ -10,11 +10,12 @@ namespace object {
 class Player : public Object {
 public:
   Player();
+  void Setup();
 
   void Update() override;
   void Draw() override;
 
-  void Start(const Vec2f& pos) { transform.pos = pos; }
+  void Start(const Vec2f&, const float);
   void CollisionSetup(const Blocks& blocks) { stageBlocks = blocks; }
 
   void GravityUpdate();
@@ -30,7 +31,7 @@ private:
   };
 	
 	int time;
-  int gravityState;
+  u_int gravityState;
 	int direction;
 
   float acceleration;

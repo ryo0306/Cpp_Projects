@@ -7,6 +7,7 @@ using namespace frameworks::scene;
 // ‰Šú‰»‚ð‚·‚é
 Title::Title() :
 SceneBase(SceneName::Title, SceneName::Main) {
+  Asset().Delete().All();
 
   const std::string TextureTable[] = {
     "res/png/player.png",
@@ -39,7 +40,10 @@ SceneBase(SceneName::Title, SceneName::Main) {
 
 // XV
 void Title::Update() {
-  isFinish = Env().isPushKey(ENTER);
+  if (Env().isPushKey(ENTER)) {
+    isFinish = true;
+    Asset().Find().Media(mediaID[0])->stop();
+  }
 }
 
 

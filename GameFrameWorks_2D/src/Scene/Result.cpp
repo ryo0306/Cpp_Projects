@@ -7,9 +7,22 @@ using namespace frameworks::scene;
 // 初期化をする
 Result::Result() :
 SceneBase(SceneName::Result, SceneName::Title) {
+  Asset().Delete().All();
 
   const std::string TextureTable[] = {
-    "res/png/player.png",
+    "res/png/result_newton1.png",
+    "res/png/result_newton2.png",
+    "res/png/result_medal.png",
+    "res/png/result_0.png",
+    "res/png/result_1.png",
+    "res/png/result_2.png",
+    "res/png/result_3.png",
+    "res/png/result_4.png",
+    "res/png/result_5.png",
+    "res/png/result_6.png",
+    "res/png/result_7.png",
+    "res/png/result_8.png",
+    "res/png/result_9.png",
   };
 
   for (const auto& data : TextureTable) {
@@ -39,9 +52,10 @@ SceneBase(SceneName::Result, SceneName::Title) {
 
 // 更新
 void Result::Update() {
-  // isFinish : 現在のシーンを終了するための変数
-  // true になると画面が変わります
-  isFinish = Env().isPushKey(ENTER);
+  if (Env().isPushKey(ENTER)) {
+    isFinish = true;
+    Asset().Find().Media(mediaID[0])->stop();
+  }
 }
 
 

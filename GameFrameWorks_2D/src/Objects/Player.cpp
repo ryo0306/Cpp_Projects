@@ -11,9 +11,10 @@ gravityState(GravityDirection::Bottom),
 direction(Move_R),
 acceleration(0.25f),
 velocity(0.0f) {
-  textureID.clear();
+}
 
-  transform.scale = Vec2f::Ones() * 50.0f;
+
+void Player::Setup() {
   transform.rotate = transform.angle = 0.0f;
 
   const std::string TextureTable[] = {
@@ -26,6 +27,12 @@ velocity(0.0f) {
   for (const auto& data : TextureTable) {
     textureID.push_back(Asset().Append().Texture(data));
   }
+}
+
+
+void Player::Start(const Vec2f& pos, const float size) {
+  transform.pos = pos;
+  transform.scale = Vec2f::Ones() * size;
 }
 
 
@@ -98,7 +105,7 @@ void Player::Update() {
 
 void Player::Draw() {
   const float Size = 512.0f;
-  const auto texture = Asset().Find().Texture(gravityState);
+  const auto texture = Asset().Find().Texture(textureID[gravityState]);
   const auto pos = transform.pos + transform.scale * 0.5f;
 
   drawTextureBox(pos.x(), pos.y(),

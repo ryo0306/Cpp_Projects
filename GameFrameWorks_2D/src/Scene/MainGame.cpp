@@ -1,6 +1,7 @@
 
 #include "MainGame.h"
 
+using namespace frameworks::object;
 using namespace frameworks::scene;
 using namespace frameworks::utility;
 
@@ -8,10 +9,22 @@ using namespace frameworks::utility;
 // 初期化をする
 MainGame::MainGame() :
 SceneBase(SceneName::Main, SceneName::Result) {
+  Asset().Delete().All();
+  player.Setup();
+  stage.Setup();
+
+  const auto& stageID = GameData::Get().GetStageID();
 
   // ギミック画像のテーブル
   const std::string TextureTable[] = {
-    "res/png/hoge.png",
+    "res/png/button_A.png",     // [0]赤スイッチ
+    "res/png/button_D.png",     // [1]青スイッチ
+    "res/png/button_B.png",     // [2]黄色スイッチ
+    "res/png/button_C.png",     // [3]緑スイッチ
+    "res/png/button_A_B.png",   // [4]赤押した
+    "res/png/button_D_B.png",   // [5]青押した
+    "res/png/button_B_B.png",   // [6]黄色押した
+    "res/png/button_C_B.png",   // [7]緑押した
   };
 
   // テーブルからデータを登録、関連付けされた ID を保持
@@ -19,6 +32,33 @@ SceneBase(SceneName::Main, SceneName::Result) {
   gimmickID.clear();
   for (auto& data : TextureTable) {
     gimmickID.push_back(Asset().Append().Texture(data));
+  }
+
+  // ギミックサイズ
+  std::shared_ptr<const float> gimmickSize;
+
+  // ギミック設置
+  switch (stageID) {
+    default:;
+    case StageID::Stage1:
+      gimmickSize = std::make_shared<const float>(80.0f);
+
+      gimmicks.push_back(StageGimmick(GravityDirection::Left, Vec2f(-2, -2.5f), Vec2f::Ones() * 0.8f));
+      break;
+
+    case StageID::Stage2:
+      gimmickSize = std::make_shared<const float>(50.0f);
+      break;
+
+    case StageID::Stage3:
+      gimmickSize = std::make_shared<const float>(50.0f);
+      break;
+  }
+
+  // ギミックサイズを反映
+  for (auto& gimmick : gimmicks) {
+    gimmick.GetTransform().pos *= (*gimmickSize);
+    gimmick.GetTransform().scale *= (*gimmickSize);
   }
 
   // BGM, SE のテーブル
@@ -46,11 +86,37 @@ SceneBase(SceneName::Main, SceneName::Result) {
   bgm->looping(true);
   bgm->play();
 
-  switch (GameData::Get().GetStageID()) {
-    default:
-    case StageID::Stage1: player.Start(Vec2f(0, 0)); break;
-    case StageID::Stage2: player.Start(Vec2f(0, 0)); break;
-    case StageID::Stage3: player.Start(Vec2f(0, 0)); break;
+  // プレイヤーとゴールの座標を設定
+  float playerScale;
+  float goalScale;
+  switch (stageID) {
+    default:;
+    case StageID::Stage1:
+      playerScale = 50.0f;
+      goalScale = 150.0f;
+
+      player.Start(Vec2f(0, 0) * playerScale, playerScale);
+      stage.GoalSetup({ Vec2f(-2, -0.9f) * goalScale, Vec2f::Ones() * goalScale, 0 },
+                      GravityDirection::Bottom);
+      break;
+
+    case StageID::Stage2:
+      playerScale = 50.0f;
+      goalScale = 80.0f;
+
+      player.Start(Vec2f(0, 0) * playerScale, playerScale);
+      stage.GoalSetup({ Vec2f(0, 0) * goalScale, Vec2f::Ones() * goalScale, 0 },
+                      GravityDirection::Right);
+      break;
+
+    case StageID::Stage3:
+      playerScale = 50.0f;
+      goalScale = 80.0f;
+
+      player.Start(Vec2f(0, 0) * playerScale, playerScale);
+      stage.GoalSetup({ Vec2f(0, 0) * goalScale, Vec2f::Ones() * goalScale, 0 },
+                      GravityDirection::Top);
+      break;
   }
 
   player.CollisionSetup(stage.GetTransforms());
@@ -84,7 +150,9 @@ void MainGame::Update() {
 
 // 描画
 void MainGame::Draw() {
+  stage.BackDraw();
   stage.Draw();
+  stage.GoalDraw();
   for (auto& gimmick : gimmicks) { gimmick.Draw(); }
   player.Draw();
 }
