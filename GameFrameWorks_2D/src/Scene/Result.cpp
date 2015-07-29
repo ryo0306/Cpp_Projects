@@ -72,13 +72,13 @@ void Result::Draw() {
   switch (GameData::Get().GetStageID())
   {
   case StageID::Stage1:
-      get_medal = count < 4;
+      get_medal = count <= 4;
     break;
   case StageID::Stage2:
-      get_medal = count < 4;
+      get_medal = count <= 4;
     break;
   case StageID::Stage3:
-    get_medal = count < 9;
+    get_medal = count <= 9;
     break;
   default:
     break;

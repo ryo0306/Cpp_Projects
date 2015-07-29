@@ -39,15 +39,40 @@ SceneBase(SceneName::Main, SceneName::Result) {
 
   // ギミック設置
   switch (stageID) {
-    default:;
+  default:;
     case StageID::Stage1:
       gimmickSize = std::make_shared<const float>(80.0f);
 
-      gimmicks.push_back(StageGimmick(GravityDirection::Left, Vec2f(-2, -2.5f), Vec2f::Ones() * 0.8f));
-      break;
 
+      gimmicks.push_back(StageGimmick(GravityDirection::Top,
+                        Vec2f(-5, 2.5f), Vec2f::Ones() * 0.8f));
+      gimmicks.push_back(StageGimmick(GravityDirection::Bottom,
+        Vec2f(-5, -0.5f), Vec2f::Ones() * 0.8f));
+      gimmicks.push_back(StageGimmick(GravityDirection::Right,
+                   Vec2f(0, -2.5f), Vec2f::Ones() * 0.8f));
+      gimmicks.push_back(StageGimmick(GravityDirection::Top,
+                    Vec2f(3, -3.5f), Vec2f::Ones() * 0.8f));
+      gimmicks.push_back(StageGimmick(GravityDirection::Left,
+        Vec2f(0, 1.5f), Vec2f::Ones() * 0.8f));
+      break;
+    
     case StageID::Stage2:
       gimmickSize = std::make_shared<const float>(50.0f);
+
+      gimmicks.push_back(StageGimmick(GravityDirection::Right,
+        Vec2f(-6.5, -0.5f), Vec2f::Ones() * 1));
+      gimmicks.push_back(StageGimmick(GravityDirection::Top,
+        Vec2f(-4.5, -3.5f), Vec2f::Ones() * 1));
+      gimmicks.push_back(StageGimmick(GravityDirection::Bottom,
+        Vec2f(-1.5, 2.5f), Vec2f::Ones() * 1));
+      gimmicks.push_back(StageGimmick(GravityDirection::Bottom,
+        Vec2f(-0.5, -2.5f), Vec2f::Ones() * 1));
+      gimmicks.push_back(StageGimmick(GravityDirection::Right,
+        Vec2f(3.5, 4.5f), Vec2f::Ones() * 1));
+      gimmicks.push_back(StageGimmick(GravityDirection::Top,
+        Vec2f(1.5, -2.5f), Vec2f::Ones() * 1));
+      gimmicks.push_back(StageGimmick(GravityDirection::Left,
+        Vec2f(6.5, -0.5f), Vec2f::Ones() * 1));
       break;
 
     case StageID::Stage3:
@@ -90,22 +115,23 @@ SceneBase(SceneName::Main, SceneName::Result) {
   float playerScale;
   float goalScale;
   switch (stageID) {
-    default:;
+  default:;
     case StageID::Stage1:
       playerScale = 50.0f;
       goalScale = 150.0f;
 
-      player.Start(Vec2f(0, 0) * playerScale, playerScale);
-      stage.GoalSetup({ Vec2f(-2, -0.9f) * goalScale, Vec2f::Ones() * goalScale, 0 },
+      player.Start(Vec2f(-2, -2.5) * playerScale, playerScale);
+      stage.GoalSetup({ Vec2f(-2.0, -1) * goalScale, Vec2f::Ones() * goalScale, 0 },
                       GravityDirection::Bottom);
       break;
-
+   
+   
     case StageID::Stage2:
       playerScale = 50.0f;
       goalScale = 80.0f;
 
-      player.Start(Vec2f(0, 0) * playerScale, playerScale);
-      stage.GoalSetup({ Vec2f(0, 0) * goalScale, Vec2f::Ones() * goalScale, 0 },
+      player.Start(Vec2f(-5.5,-3.5) * playerScale, playerScale);
+      stage.GoalSetup({ Vec2f(3.75, -2.5) * goalScale, Vec2f::Ones() * goalScale * 1.5, 0 },
                       GravityDirection::Right);
       break;
 

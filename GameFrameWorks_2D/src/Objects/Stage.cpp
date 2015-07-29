@@ -136,7 +136,7 @@ void Stage::Setup() {
     blocks.push_back({ Vec2f(0, 2.5f), Vec2f::Ones(), blockID[13] });
     break;
 
-    //default: // *Debug Mode Only* Initialized Stage Data.
+   // default: // *Debug Mode Only* Initialized Stage Data.
   case StageID::Stage2:
     Scale = std::make_shared<const float>(50.0f);
 
